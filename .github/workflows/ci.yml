@@ -1,5 +1,11 @@
 name: CI
-on: [push]
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -11,5 +17,6 @@ jobs:
         with:
           java-version: '25'
           distribution: 'temurin'
+          cache: maven
       - name: Run tests with Maven
         run: mvn clean test
