@@ -1,20 +1,38 @@
-name: CI
+name: CI with Caching and Artifacts
+
 on:
   push:
-    branches: [ "main" ]
+    branches: [ main ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ main ]
+
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+
       - name: Set up JDK 25
         uses: actions/setup-java@v3
         with:
           java-version: '25'
           distribution: 'temurin'
           cache: maven
-      - name: Run tests with Maven
-        run: mvn clean test
+
+      - name: Build project
+        run: mvn clean compile
+
+      - name: Run tests
+        run: mvn test
+        env:
+          API_KEY: ${{ secrets.TEST_API_KEY }}
+
+      - name: Upload test reports
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: test-reports-${{ github.run_number }}
+          path: target/surefire-reports/
+          retention-days: 30

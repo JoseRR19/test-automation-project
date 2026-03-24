@@ -1,4 +1,5 @@
 # Test Automation Project
+[![CI](https://github.com/JoseRR19/test-automation-project/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/JoseRR19/test-automation-project/actions/workflows/ci.yml)
 
 ## Description
 This is a Java-based test automation project that covers UI and API testing. It uses Selenium WebDriver and TestNG for web automation, Postman/Newman for API tests, and Maven for build and profile management. The framework follows the Page Object Model, supports multiple environments (dev, QA, prod), and generates test reports and screenshots for verification.

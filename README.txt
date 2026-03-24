@@ -65,3 +65,5 @@ Run tests using one of the following methods:
 Confirm all tests pass with BUILD SUCCESS
 
 mvn clean test
+
+jenkins password: a2a42a991930450b9a21ee1ae7817eca
