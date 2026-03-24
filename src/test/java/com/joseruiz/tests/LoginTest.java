@@ -24,6 +24,7 @@ public class LoginTest {
     }
 
     @Test
+    // Added for PR test validation
     public void loginPageLoadsCorrectly() {
         Assert.assertEquals(driver.getTitle(), "Swag Labs");
         Assert.assertTrue(driver.getPageSource().contains("user-name"));
